@@ -120,8 +120,7 @@
                 android:background="@color/blanc"
                 android:text="@string/about"
                 android:textColor="@color/darkGrey"
-                android:textSize="20sp"
-                android:textStyle="italic"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textAboutDescription"
