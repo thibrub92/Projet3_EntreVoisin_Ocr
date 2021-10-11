@@ -91,4 +91,28 @@ public class ListNeighbourActivityTest {
         public void listNeighbourActivityTest7() {
         }
     }
+
+    @LargeTest
+    @RunWith(AndroidJUnit4.class)
+    public static class ListNeighbourActivityTest8 {
+
+        @Rule
+        public ActivityTestRule<ListNeighbourActivity> mActivityTestRule = new ActivityTestRule<>(ListNeighbourActivity.class);
+
+        @Test
+        public void listNeighbourActivityTest8() {
+        }
+    }
+
+    @LargeTest
+    @RunWith(AndroidJUnit4.class)
+    public static class ListNeighbourActivityTest9 {
+
+        @Rule
+        public ActivityTestRule<ListNeighbourActivity> mActivityTestRule = new ActivityTestRule<>(ListNeighbourActivity.class);
+
+        @Test
+        public void listNeighbourActivityTest9() {
+        }
+    }
 }
