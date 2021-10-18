@@ -5,7 +5,7 @@ Ce dépôt contient une mini-application pour le P3 du parcours **Grande École 
 EntreVoisins
 Développé sur Android Studio
 
-#Fonctions déjà présentes
+# Fonctions déjà présentes
 
 ⦁ Lister mes voisins                 
 
@@ -13,7 +13,7 @@ Développé sur Android Studio
 
 ⦁ Suppression d’un voisin 
 
-#Fonctions ajoutées
+# Fonctions ajoutées
 
 ⦁ Le profil de l'utilisateur qui s'affiche au clic
 
