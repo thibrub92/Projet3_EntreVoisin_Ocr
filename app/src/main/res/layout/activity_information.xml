@@ -148,8 +148,6 @@
         app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintStart_toStartOf="@+id/backgroundId"
         app:layout_constraintTop_toTopOf="@+id/backgroundId"
-
-
         android:drawable="@drawable/ic_star_border"
         android:state_pressed="false"/>
 
