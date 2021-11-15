@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
+import com.openclassrooms.entrevoisins.events.RemoveNeighbourFavoriteEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import org.greenrobot.eventbus.EventBus;
@@ -25,9 +26,11 @@ import butterknife.ButterKnife;
 public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeighbourRecyclerViewAdapter.ViewHolder> {
 
     private final List<Neighbour> mNeighbours;
+     private boolean isFavoriteFragment;
 
-    public MyNeighbourRecyclerViewAdapter(List<Neighbour> items) {
+    public MyNeighbourRecyclerViewAdapter(List<Neighbour> items, boolean isFavoriteFragment) {
         mNeighbours = items;
+        this.isFavoriteFragment = isFavoriteFragment;
     }
 
     @Override
@@ -49,8 +52,11 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isFavoriteFragment){
+                    EventBus.getDefault().post(new RemoveNeighbourFavoriteEvent(neighbour));
+                } else{
                 EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
-            }
+            }}
         });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +70,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
     }
 
     @Override
+
     public int getItemCount() {
         return mNeighbours.size();
     }

@@ -56,11 +56,16 @@ public class NeighbourServiceTest {
 
       service.invertNeighbourFavoriteStatus(neighbour);
       assertTrue(neighbour.isFavorite());
+
+        service.invertNeighbourFavoriteStatus(neighbour);
+        assertFalse(neighbour.isFavorite());
     }
     @Test
     public void getFavoriteNeighbourWithSuccess() {
       assertEquals(service.getFavoriteNeighbours().size(),0);
       service.invertNeighbourFavoriteStatus(service.getNeighbours().get(0));
-        assertEquals(service.getFavoriteNeighbours().size(),1);
+
+      assertEquals(service.getFavoriteNeighbours().size(),1);
+        service.invertNeighbourFavoriteStatus(service.getNeighbours().get(0));
     }
 }

@@ -19,6 +19,8 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.pressImeActionButton;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
@@ -99,18 +101,32 @@ public class NeighboursListTest {
     }
     @Test
     public void myNeighboursList_check_favoriteList_removeItem(){
-        onView(withId(R.id.item_list_name)).perform(click());
+        onView(ViewMatchers.withId(R.id.list_neighbours))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
 
         onView(withId(R.id.favoriteButton)).perform(click());
 
         pressBack();
 
-        onView(withId(R.id.tabItem2)).check(withItemCount(ITEMS_COUNT +1));
+        onView(ViewMatchers.withId(R.id.list_neighbours)).perform(swipeLeft());
 
-        onView(withId(R.id.item_list_delete_button)).perform(click());
+        onView(withId(R.id.list_favorite_neighbours)).check(withItemCount(1));
 
-        onView(withId(R.id.list_favorite_neighbours)).check(withItemCount(ITEMS_COUNT -1));
+        onView(ViewMatchers.withId(R.id.list_favorite_neighbours))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
 
-        ITEMS_COUNT = ITEMS_COUNT -1;
+        try {
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        onView(withId(R.id.favoriteButton)).perform(click());
+
+        pressBack();
+
+        onView(withId(R.id.list_favorite_neighbours)).check(withItemCount(0));
+
+        onView(ViewMatchers.withId(R.id.list_favorite_neighbours)).perform(swipeRight());
     }
 }
